@@ -19,7 +19,8 @@ class MainBranch{
     public void checkloan(long loan, float branchIntrest ){
         if (loan < bankTotalFund){
             System.out.println("Loan Approved");
-            totalIntrest(bankIntrest, branchIntrest);
+            float interest = totalIntrest(bankIntrest, branchIntrest);
+            System.out.println(interest);
         } 
         else{
             System.out.println("Loan Not Approved");

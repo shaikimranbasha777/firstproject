@@ -2,13 +2,17 @@ package JavaClass.day2;
 
 class CollageTask {
     String collageName;
-    int collageId;
+    private int collageId;
     String collagePlace;
 
-    public CollageTask(String collageName, int collageId, String collagePlace) {
-        this.collageName = collageName;
+    // public CollageTask(String collageName, int collageId, String collagePlace) {
+    //     this.collageName = collageName;
+    //     this.collageId = collageId;
+    //     this.collagePlace = collagePlace;
+    // }
+
+    public CollageTask(int collageId) {
         this.collageId = collageId;
-        this.collagePlace = collagePlace;
     }
 
     public void dispalyCollageDetails(){
@@ -25,7 +29,9 @@ class Branch extends CollageTask {
 
     public Branch(String collageName, int collageId, String collagePlace, String branchName, int branchId,
             int onOfStaf) {
-        super(collageName, collageId, collagePlace);
+        super(collageId);
+        super.collageName = collageName;
+        super.collagePlace = collagePlace;
         this.branchName = branchName;
         this.branchId = branchId;
         this.onOfStaf = onOfStaf;

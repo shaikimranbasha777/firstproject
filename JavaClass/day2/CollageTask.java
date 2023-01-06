@@ -32,6 +32,7 @@ class Branch extends CollageTask {
     }
 
     public void dispalyBranchDetails(){
+        super.dispalyCollageDetails();
         System.out.println("Branch Name = " + branchName);
         System.out.println("Branch Id = " + branchId);
         System.out.println("No Of Staf = " + onOfStaf);
@@ -42,8 +43,6 @@ class Student extends Branch {
     String studentName;
     int studentId;
     String studentPlace;
-
-    
 
     public Student(String collageName, int collageId, String collagePlace, String branchName, int branchId,
             int onOfStaf, String studentName, int studentId, String studentPlace) {
@@ -57,19 +56,15 @@ class Student extends Branch {
         System.out.println("Student Name = " + studentName);
         System.out.println("Student Id = " + studentId);
         System.out.println("Student Location = " + studentPlace);
-        System.out.println("Collage Name = " + collageName);
-        System.out.println("Collage Id = " + collageId);
-        System.out.println("Collage Location = " + collagePlace);
-        System.out.println("Branch Name = " + branchName);
-        System.out.println("Branch Id = " + branchId);
-        System.out.println("No Of Staf = " + onOfStaf);
+        super.dispalyCollageDetails();
+        super.dispalyBranchDetails();
     }
 
     public static void main(String args[]){
         Student stu1 = new Student("Nagarjuna", 1, "Bangalore", "Civil Engneering", 25, 10, "Imran", 122, "Kurnool");
 
         stu1.dispalyStudentDetails();
-        stu1.dispalyCollageDetails();
-        stu1.dispalyBranchDetails();
+        //stu1.dispalyCollageDetails();
+        //stu1.dispalyBranchDetails();
     }
 }

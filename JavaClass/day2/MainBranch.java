@@ -19,14 +19,14 @@ class MainBranch{
     public void checkloan(long loan, float branchIntrest ){
         if (loan < bankTotalFund){
             System.out.println("Loan Approved");
-            totalIntrest(branchIntrest);
+            totalIntrest(bankIntrest, branchIntrest);
         } 
         else{
             System.out.println("Loan Not Approved");
         }
     }
     
-    public float totalIntrest(float branchIntrest){
+    public float totalIntrest(float bankIntrest, float branchIntrest){
 
         float totalIntrest = bankIntrest + branchIntrest;
         

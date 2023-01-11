@@ -5,12 +5,6 @@ class CollageTask {
     private int collageId;
     String collagePlace;
 
-    // public CollageTask(String collageName, int collageId, String collagePlace) {
-    //     this.collageName = collageName;
-    //     this.collageId = collageId;
-    //     this.collagePlace = collagePlace;
-    // }
-
     public CollageTask(int collageId) {
         this.collageId = collageId;
     }

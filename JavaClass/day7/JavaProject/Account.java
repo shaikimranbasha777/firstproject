@@ -1,4 +1,4 @@
-package JavaClass.JavaProject;
+package JavaClass.day7.JavaProject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +10,7 @@ public class Account implements AccountInterface{
     String accountType = "";
 
     Scanner sc = new Scanner(System.in);
+    
 
     @Override
     public Account addAccount() {
@@ -31,21 +32,22 @@ public class Account implements AccountInterface{
 
     @Override
     public void searchAccount() {
-        // TODO Auto-generated method stub
+        
         
     }
 
     @Override
-    public void editAccount() {
-        // TODO Auto-generated method stub
-        
+    public Customer editAccount(Customer user) {
+        return user;  
     }
-     public void Transcation(){
+
+     public void transcationDetails(){
         for (Transcation obj : trasaction){
             System.out.println("Transaction Date " + obj.transcationDate);
             System.out.println("Transaction type " + obj.transcationType);
             System.out.println("Transaction Ammount " + obj.transcationAmmount);
             System.out.println("Current Balance " + obj.currentBal);
+            System.out.println("------------------");
         }
      }
 }

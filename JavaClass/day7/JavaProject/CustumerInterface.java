@@ -1,7 +1,7 @@
-package JavaClass.JavaProject;
+package JavaClass.day7.JavaProject;
 
 public interface CustumerInterface {
     void addCustmer();
     void deleteCustmer();
-    void searchCustmer();
+    void searchCustmer(Customer user);
 }

@@ -1,4 +1,4 @@
-package JavaClass.JavaProject;
+package JavaClass.day7.JavaProject;
 
 import java.util.HashMap;
 

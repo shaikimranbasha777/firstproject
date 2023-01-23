@@ -89,6 +89,39 @@ class KotlinTask1 {
                 }
             }
         }
+    fun deleteTable(){
+        var preStat:PreparedStatement?=null;
+        println("enter table name to delete from student details database")
+        var tableName = readLine()!!.toString();
+
+        var sql = "drop table $tableName"
+        try {
+            preStat = conn!!.prepareStatement(sql)
+            var status = preStat.executeUpdate()
+            if (status==0){
+                println("table deleted ")
+            }
+        }catch (e:SQLException){
+            println(e)
+        }
+    }
+
+    fun truncateTable(){
+        var preStat:PreparedStatement?=null;
+        println("enter table name to delete from student details database")
+        var tableName = readLine()!!.toString();
+
+        var sql = "truncate table $tableName"
+        try {
+            preStat = conn!!.prepareStatement(sql)
+            var status = preStat.executeUpdate()
+            if (status==0){
+                println("data deleted in table")
+            }
+        }catch (e:SQLException){
+            println(e)
+        }
+    }
 }
 
 fun main(){
@@ -96,14 +129,15 @@ fun main(){
     jdbcObj.createConnection()
 
     while(true){
-        println("Chose choice \n 1.Create Table \n 2.insert values to table \n 3.search details using id \n 4. Exit of System")
+        println("Chose choice \n 1.Create Table \n 2.insert values to table \n 3.search details using id \n 4.Drop the table from database\n 5.To delete only data in table \n 6.Exit of System")
         var choice = readLine()!!.toInt()
         when(choice){
             1 -> jdbcObj.createTable();
-            1 -> jdbcObj.createTable();
             2 -> jdbcObj.insertIntoTable();
             3 -> jdbcObj.searchInTable();
-            4 -> System.exit(1)
+            4 -> jdbcObj.deleteTable();
+            5 -> jdbcObj.truncateTable()
+            6 -> System.exit(1);
             else->{
                 print("Enter Valid choice")
             }

@@ -1,0 +1,1702 @@
+Microsoft Windows [Version 10.0.22621.1105]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Imran>mongosh
+Current Mongosh Log ID: 63cf7cfc62a557c11e9e3b7c
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.2
+Using MongoDB:          6.0.4
+Using Mongosh:          1.6.2
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-01-23T09:49:01.864+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> show dbs
+admin   40.00 KiB
+config  12.00 KiB
+local   40.00 KiB
+test> use demo
+switched to db demo
+demo> db
+demo
+demo> show collectons
+MongoshInvalidInputError: [COMMON-10001] 'collectons' is not a valid argument for "show".
+demo> show collections
+
+demo> db.createCollection('users')
+{ ok: 1 }
+demo> show collections
+users
+demo> db.users.insert({name:'imran',age:23,place:'kurnool'})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("63cf7f75f580d4e93aec058c") }
+}
+demo> db.users.insertOne({name:'imran',age:23,place:'kurnool'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63cf7f89f580d4e93aec058d")
+}
+demo> db.users.find
+[Function: find] AsyncFunction {
+  returnsPromise: true,
+  apiVersions: [ 1, Infinity ],
+  returnType: 'Cursor',
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  }
+]
+demo> db.users.find.pretty()
+TypeError: db.users.find.pretty is not a function
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  }
+]
+demo> db.users.insertMany([{name:'malik',age:20},{name:'mahaboob',age:20}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63cf82d3f580d4e93aec058e"),
+    '1': ObjectId("63cf82d3f580d4e93aec058f")
+  }
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  }
+]
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  }
+]
+demo> db.users.insertMany([{name:'malik',age:20,place:'kurnool'},{name:'mahaboob',age:20,place:'kurnool'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63cf8348f580d4e93aec0590"),
+    '1': ObjectId("63cf8348f580d4e93aec0591")
+  }
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.createCollection('product')
+{ ok: 1 }
+demo> show collections
+product
+users
+demo> db.product.insertMany([{productName:'Vivo',productType:'Mobile',price:20000}, {productName:'Dell',productType:'Laptop',price:50000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("63cf848ff580d4e93aec0592"),
+    '1': ObjectId("63cf848ff580d4e93aec0593")
+  }
+}
+demo> db.product.find()
+[
+  {
+    _id: ObjectId("63cf848ff580d4e93aec0592"),
+    productName: 'Vivo',
+    productType: 'Mobile',
+    price: 20000
+  },
+  {
+    _id: ObjectId("63cf848ff580d4e93aec0593"),
+    productName: 'Dell',
+    productType: 'Laptop',
+    price: 50000
+  }
+]
+demo> db.users.update({name:'imrsn'},{$set:{'age':24}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'imran'},{$set:{'age':24}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 23,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'imran'},{$set:{'age':24}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo> db.users.update({_id: ObjectId("63cf7f89f580d4e93aec058d")},{$set:{'age':24}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  { _id: ObjectId("63cf82d3f580d4e93aec058e"), name: 'malik', age: 20 },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'malik'},{$set:{'place':'kurnool'}}, {upsert:true})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'mahaboob'},{$inc:{'age':2}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 22
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 20,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'mahaboob',place:'kurnool'},{$inc:{'age':3}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 22
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 23,
+    place: 'kurnool'
+  }
+]
+demo> db.users.findAndModify({name:'mahaboob',place:'kurnool'},{$inc:{'age':5}})
+MongoshInvalidInputError: [COMMON-10001] Missing required property: "query"
+demo> db.users.findAndModify({name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:63)
+
+> 1 | db.users.findAndModify({name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}})
+    |                                                                ^
+  2 |
+
+demo> db.users.findAndModify({query:{name:'mahaboob',place:'kurnool'}},{update:{$inc:{'age':3}}})
+MongoshInvalidInputError: [COMMON-10001] Must specify options.update or options.remove
+demo> db.users.findAndModify({query:{name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:87)
+
+> 1 | db.users.findAndModify({query:{name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}})
+    |                                                                                        ^
+  2 |
+
+demo> db.users.findAndModify({query:{name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}}})
+{
+  _id: ObjectId("63cf8348f580d4e93aec0591"),
+  name: 'mahaboob',
+  age: 23,
+  place: 'kurnool'
+}
+demo> db.users.findAndModify({query:{name:'mahaboob',place:'kurnool'},update:{$inc:{'age':3}}})
+{
+  _id: ObjectId("63cf8348f580d4e93aec0591"),
+  name: 'mahaboob',
+  age: 26,
+  place: 'kurnool'
+}
+demo> db.users.findAndModify({query:{name:'malik'},update:{$inc:{'age':3}}})
+{
+  _id: ObjectId("63cf82d3f580d4e93aec058e"),
+  name: 'malik',
+  age: 20,
+  place: 'kurnool'
+}
+demo> db.users.findAndModify({query:{name:'malik'},update:{$inc:{'age':3}}})
+{
+  _id: ObjectId("63cf82d3f580d4e93aec058e"),
+  name: 'malik',
+  age: 23,
+  place: 'kurnool'
+}
+demo> db.users.findAndModify({query:{name:'malik'},update:{$set:{'place':'hyd'}}})
+{
+  _id: ObjectId("63cf82d3f580d4e93aec058e"),
+  name: 'malik',
+  age: 26,
+  place: 'kurnool'
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 26,
+    place: 'hyd'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 22
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 29,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'mahaboob'},{$min:{'age':25}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 26,
+    place: 'hyd'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 22
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 29,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({name:'mahaboob'},{$min:{'age':20}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 26,
+    place: 'hyd'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 29,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({},{$rename:{'age':'years'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    age: 24,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    age: 26,
+    place: 'hyd'
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    age: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    age: 20,
+    place: 'kurnool'
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    age: 29,
+    place: 'kurnool'
+  }
+]
+demo> db.users.update({},{$rename:{age:'years'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo> db.users.updateMany({},{$rename:{age:'years'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 6,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    place: 'hyd',
+    years: 26
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    place: 'kurnool',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo> db.users.remove({query:{name:'malik'}})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 0 }
+demo> db.users.find().pretty()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058e"),
+    name: 'malik',
+    place: 'hyd',
+    years: 26
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0590"),
+    name: 'malik',
+    place: 'kurnool',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo> db.users.remove({{name:'malik'}})
+Uncaught:
+SyntaxError: Unexpected token (1:17)
+
+> 1 | db.users.remove({{name:'malik'}})
+    |                  ^
+  2 |
+
+demo> db.users.remove({name:'malik'})
+{ acknowledged: true, deletedCount: 2 }
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo>
+
+demo>
+
+demo> db.users.insertOne({name:'immu',subjects:['eng','maths','social']})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63cfb5cff580d4e93aec0594")
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'eng', 'maths', 'social' ]
+  }
+]
+demo> db.users.upadteOne({name:'immu'},{$push:{subjects:'telugu'}})
+TypeError: db.users.upadteOne is not a function
+demo> db.users.updateOne({name:'immu'},{$push:{subjects:'telugu'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'eng', 'maths', 'social', 'telugu' ]
+  }
+]
+demo> db.users.updateOne({name:'immu'},{$set:{marks:[{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,tetelugu:20},
+... {eng:20,maths:25,social:30,telugu:20},
+... db.users.updateOne({name:'immu'},{$set:{marks:[{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20},
+... db.users.updateOne({name:'immu'},{$set:{marks:[{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20}]
+...
+...
+...
+demo> db.users.updateOne({name:'immu'},{$set:{marks:[{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20},{eng:20,maths:25,social:30,telugu:20}]
+... }})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'eng', 'maths', 'social', 'telugu' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.updateOne({name:'immu'},{$pop:{subjects:'telugu'}})
+MongoServerError: Expected a number in: subjects: "telugu"
+demo> db.users.updateOne({name:'immu'},{$pop:{subjects:1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'eng', 'maths', 'social' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.updateOne({name:'immu'},{$pop:{subjects:0}})
+MongoServerError: $pop expects 1 or -1, found: 0
+demo> db.users.updateOne({name:'immu'},{$pop:{subjects:-1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'maths', 'social' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.updateOne({name:'immu'},{$push:{subjects:'telugu'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.updateOne({name:'immu'},{$push:{subjects:'eng'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'telugu'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'maths', 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'}}{multi:true})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:75)
+
+> 1 | db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'}}{multi:true})
+    |                                                                            ^
+  2 |
+
+demo> db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'}{multi:true}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:74)
+
+> 1 | db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'}{multi:true}})
+    |                                                                           ^
+  2 |
+
+demo> db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'},{multi:true}})
+Uncaught:
+SyntaxError: Unexpected token (1:75)
+
+> 1 | db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'},{multi:true}})
+    |                                                                            ^
+  2 |
+
+demo> db.users.updateOne({name:'immu'},{$pull:{subjects:'eng', subjects:'maths'}},{multi:true})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.update({name:'immu'},{$push:{marks[0].eng:25}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:43)
+
+> 1 | db.users.update({name:'immu'},{$push:{marks[0].eng:25}})
+    |                                            ^
+  2 |
+
+demo> db.users.update({name:'immu'},{$push:{marks:{eng:25}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 25 }
+    ]
+  }
+]
+demo> db.users.find().limit(3)
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  }
+]
+demo> db.users.find().sort(years:1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:26)
+
+> 1 | db.users.find().sort(years:1)
+    |                           ^
+  2 |
+
+demo> db.users.find().sort('years':1)
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:28)
+
+> 1 | db.users.find().sort('years':1)
+    |                             ^
+  2 |
+
+demo> db.users.find().sort('years',1)
+[
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 25 }
+    ]
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo> db.users.find().sort('years',-1)
+[
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 25 }
+    ]
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo> db.users.find().sort(years,-1)
+ReferenceError: years is not defined
+demo> db.users.find().sort('years',-1)
+[
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 25 }
+    ]
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  }
+]
+demo> db.users.update({name:'immu'},{$set:{marks:{'1':{eng:25}}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: { '1': { eng: 25 } }
+  }
+]
+demo> db.users.updateOne({ name: 'immu' }, { $set: { marks: [{ eng: 20, maths: 25, social: 30, telugu: 20 }, { eng: 20, maths: 25, social: 30, telugu: 20 }, { eng: 20, maths: 25, social: 30, telugu: 20 }] } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 }
+    ]
+  }
+]
+demo> db.users.update({name:'immu'},{$set:{marks:{1:{eng:25}}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: { '1': { eng: 25 } }
+  }
+]
+demo> db.users.updateOne({ name: 'immu' }, { $set: { marks: [{ eng: 20, maths: 25, social: 30, telugu: 20 }, { eng: 20, maths: 25, social: 30, telugu: 20 }, { eng: 20, maths: 25, social: 30, telugu: 20 }] } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.update({name:'immu'},{$push:{marks:{1:{eng:25}}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { '1': { eng: 25 } }
+    ]
+  }
+]
+demo> db.users.find().sort({years:1})
+[
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { '1': { eng: 25 } }
+    ]
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+demo> db.users.update({name:'immu'},{$push:{marks:{$<eng>:25}}})
+Uncaught:: 29
+SyntaxError: Unexpected token, expected "," (1:46)
+]
+> 1 | db.users.update({name:'immu'},{$push:{marks:{$<eng>:25}}})
+    |                                               ^
+  2 |
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+demo>
+    place: 'kurnool',
+demo>
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+demo>
+    _id: ObjectId("63cf7f75f580d4e93aec058c"),
+C:\Users\Imran>n',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { '1': { eng: 25 } }
+    ]
+  }
+]
+demo> db.users.remove({name:'malik'})
+{ acknowledged: true, deletedCount: 0 }
+demo> db.users.remove({name:'imran', _id: ObjectId("63cf7f75f580d4e93aec058c")})
+{ acknowledged: true, deletedCount: 1 }
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { '1': { eng: 25 } }
+    ]
+  }
+]
+demo> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+demo    112.00 KiB
+local    40.00 KiB
+demo> show collections
+product
+users
+demo>

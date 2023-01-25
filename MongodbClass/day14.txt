@@ -1,0 +1,760 @@
+Dear sir 
+
+    i have created two dbs demo and demo1 in that one collection called cutomer with diffrent ways please check it 
+
+    i performed crud operations on that you given task also completed
+
+test> show dbs
+admin    40.00 KiB
+books    72.00 KiB
+config  108.00 KiB
+demo    112.00 KiB
+demo1     8.00 KiB
+local    40.00 KiB
+test> use demo1
+switched to db demo1
+demo1> show collections
+customer
+demo1>  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+Uncaught:
+SyntaxError: Unexpected token, expected "]" (1:91)
+
+> 1 |  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+    |                                                                                            ^
+  2 |
+
+demo1>  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+Uncaught:
+SyntaxError: Unexpected token, expected "]" (1:91)
+
+> 1 |  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+    |                                                                                            ^
+  2 |
+
+demo1>  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+Uncaught:
+SyntaxError: Unexpected token, expected "]" (1:91)
+
+> 1 |  db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+    |                                                                                            ^
+  2 |
+
+demo1> db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+Uncaught:
+SyntaxError: Unexpected token, expected "]" (1:90)
+
+> 1 | db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:{[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}]}, companyName:'Axis School of Fintech'}])
+    |                                                                                           ^
+  2 |
+
+demo1> db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}], companyName:'Axis School of Fintech'}])
+Uncaught:
+SyntaxError: Unexpected token, expected "]" (1:90)
+
+> 1 | db.customer.insertOne([{name:'imran', address:{[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}]}, bankDetails:[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}], companyName:'Axis School of Fintech'}])
+    |                                                                                           ^
+  2 |
+
+demo1> db.customer.insertOne([{name:'imran', address:[{street:'School',pin:25648,city:'kurnool'},{street:'Pedda kottala',pin:25648,city:'hyd'}], bankDetails:[{bankName:'Axis', accountNo:256897485, accountBalance:25000},{bankName:'SBI', accountNo:56485297, accountBalance:30000}], companyName:'Axis School of Fintech'}])
+{
+  acknowledged: true,
+  insertedId: ObjectId("63d1132df8311d844d1422a2")
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  }
+]
+demo1> db.customer.insertOne([{name:'mahaboob', address:[{street:'muttu',pin:25648,city:'kurnool'},{street:'kormangala',pin:25658,city:'bangalore'}], bankDetails:[{bankName:'Axis', accountNo:256897485, accountBalance:55000},{bankName:'SBI', accountNo:56485297, accountBalance:50000}], companyName:'Axis School of Fintech'}])
+{
+  acknowledged: true,
+  insertedId: ObjectId("63d113bef8311d844d1422a3")
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$set:{'bankDetails.$.accountBalance':25645}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo1> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$push:{'bankDetails.$.accountBalance':25645}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo1> db.customer.updateOne({{name:'imran'},{'bankDetails.bankName':'Axis'}},{$push:{'bankDetails.$.accountBalance':25645}})
+Uncaught:
+SyntaxError: Unexpected token (1:23)
+
+> 1 | db.customer.updateOne({{name:'imran'},{'bankDetails.bankName':'Axis'}},{$push:{'bankDetails.$.accountBalance':25645}})
+    |                        ^
+  2 |
+
+demo1> db.customer.updateOne({name:'imran'},{'bankDetails.bankName':'Axis'},{$push:{'bankDetails.$.accountBalance':25645}})
+MongoInvalidArgumentError: Update document requires atomic operators
+demo1> db.customer.updateOne({'bankDetails.$.bankName':'Axis'},{$push:{'bankDetails.$.accountBalance':25645}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo1> db.customer.updateOne({name:'imran'},{$set:{'bankDetails.$.bankName':'RBI'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo1> use demo
+switched to db demo
+demo> db.users.find()
+[
+  {
+    _id: ObjectId("63cf7f89f580d4e93aec058d"),
+    name: 'imran',
+    place: 'kurnool',
+    years: 24
+  },
+  {
+    _id: ObjectId("63cf82d3f580d4e93aec058f"),
+    name: 'mahaboob',
+    years: 20
+  },
+  {
+    _id: ObjectId("63cf8348f580d4e93aec0591"),
+    name: 'mahaboob',
+    place: 'kurnool',
+    years: 29
+  },
+  {
+    _id: ObjectId("63cfb5cff580d4e93aec0594"),
+    name: 'immu',
+    subjects: [ 'social', 'eng' ],
+    marks: [
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { eng: 20, maths: 25, social: 30, telugu: 20 },
+      { '1': { eng: 25 } }
+    ]
+  }
+]
+demo> db.createCollection('customer')
+{ ok: 1 }
+demo> db.customer.insertOne({name:'mahaboob', address:[{street:'muttu',pin:25648,city:'kurnool'},{street:'kormangala',pin:25658,city:'bangalore'}], bankDetails:[{bankName:'Axis', accountNo:256897485, accountBalance:55000},{bankName:'SBI', accountNo:56485297, accountBalance:50000}], companyName:'Axis School of Fintech'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63d117def8311d844d1422a4")
+}
+demo> db.customer.insertOne({name:'imran', address:[{street:'kuut',pin:25648,city:'knl'},{street:'kormangala',pin:25658,city:'HYD'}], bankDetails:[{bankName:'IOB', accountNo:256897485, accountBalance:56800},{bankName:'RBI', accountNo:56485297, accountBalance:50000}], companyName:'Axis School of Fintech'})
+{
+  acknowledged: true,
+  insertedId: ObjectId("63d1182af8311d844d1422a5")
+}
+demo> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$push:{'bankDetails.$.accountBalance':25645}})
+MongoServerError: The field 'bankDetails.0.accountBalance' must be an array but is of type int in document {_id: ObjectId('63d117def8311d844d1422a4')}
+demo> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$push:{'bankDetails.accountBalance':25645}})
+MongoServerError: Cannot create field 'accountBalance' in element {bankDetails: [ { bankName: "Axis", accountNo: 256897485, accountBalance: 55000 }, { bankName: "SBI", accountNo: 56485297, accountBalance: 50000 } ]}
+demo> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$set:{'bankDetails.accountBalance':25645}})
+MongoServerError: Cannot create field 'accountBalance' in element {bankDetails: [ { bankName: "Axis", accountNo: 256897485, accountBalance: 55000 }, { bankName: "SBI", accountNo: 56485297, accountBalance: 50000 } ]}
+demo> db.customer.updateOne({'bankDetails.bankName':'Axis'},{$set:{'bankDetails.$.accountBalance':25645}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [
+      { bankName: 'IOB', accountNo: 256897485, accountBalance: 56800 },
+      { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  }
+]
+demo> use demo1
+switched to db demo1
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'Axis'},{$set:{'0.bankDetails.$.accountBalance':25645}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25645
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'Axis'},{$set:{'0.bankDetails.$.banklName':'RBI'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25645,
+          banklName: 'RBI'
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'Axis'},{$unset:{'0.bankDetails.$.banklName':'RBI'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 25645
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'Axis'},{$set:{'0.bankDetails.$.bankName':'RBI'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'RBI',
+          accountNo: 256897485,
+          accountBalance: 25645
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'SBI'},{$set:{'0.bankDetails.$.bankName':'IOB'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo1> db.customer.find()
+[
+  {
+    '0': {
+      name: 'imran',
+      address: [
+        { street: 'School', pin: 25648, city: 'kurnool' },
+        { street: 'Pedda kottala', pin: 25648, city: 'hyd' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'RBI',
+          accountNo: 256897485,
+          accountBalance: 25645
+        },
+        { bankName: 'IOB', accountNo: 56485297, accountBalance: 30000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d1132df8311d844d1422a2")
+  },
+  {
+    '0': {
+      name: 'mahaboob',
+      address: [
+        { street: 'muttu', pin: 25648, city: 'kurnool' },
+        { street: 'kormangala', pin: 25658, city: 'bangalore' }
+      ],
+      bankDetails: [
+        {
+          bankName: 'Axis',
+          accountNo: 256897485,
+          accountBalance: 55000
+        },
+        { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+      ],
+      companyName: 'Axis School of Fintech'
+    },
+    _id: ObjectId("63d113bef8311d844d1422a3")
+  }
+]
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'IOB'},{$pull:{'0.bankDetails.$.bankName':'IOB'}})
+MongoServerError: Cannot apply $pull to a non-array value
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'IOB'},{$pull:{0:{bankDetails:{bankName:'IOB'}}}})
+MongoServerError: Cannot apply $pull to a non-array value
+demo1> db.customer.updateOne({'0.bankDetails.bankName':'IOB'},{$pull:{0:{bankDetails:{bankName:'IOB'}}}})
+MongoServerError: Cannot apply $pull to a non-array value
+demo1> use demo
+switched to db demo
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$pull:{bankDetails:{bankName:'IOB'}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [ { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 } ],
+    companyName: 'Axis School of Fintech'
+  }
+]
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$push:{bankDetails:{bankName:'IOB', accountNo:254648927, acccountBalance: 50000}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+demo> db.customer.updateOne({name: 'imran'},{$push:{bankDetails:{bankName:'IOB', accountNo:254648927, acccountBalance: 50000}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [
+      { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 },
+      { bankName: 'IOB', accountNo: 254648927, acccountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  }
+]
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$set:{'bankDetails.$.accountBalance':100000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [
+      { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 },
+      {
+        bankName: 'IOB',
+        accountNo: 254648927,
+        acccountBalance: 50000,
+        accountBalance: 100000
+      }
+    ],
+    companyName: 'Axis School of Fintech'
+  }
+]
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$unset:{'bankDetails.$.accountBalance':100000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [
+      { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 },
+      { bankName: 'IOB', accountNo: 254648927, acccountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  }
+]
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$set:{'bankDetails.$.accountBalance':100000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.updateOne({'bankDetails.bankName':'IOB'},{$unset:{'bankDetails.$.acccountBalance':50000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+demo> db.customer.find()
+[
+  {
+    _id: ObjectId("63d117def8311d844d1422a4"),
+    name: 'mahaboob',
+    address: [
+      { street: 'muttu', pin: 25648, city: 'kurnool' },
+      { street: 'kormangala', pin: 25658, city: 'bangalore' }
+    ],
+    bankDetails: [
+      { bankName: 'Axis', accountNo: 256897485, accountBalance: 25645 },
+      { bankName: 'SBI', accountNo: 56485297, accountBalance: 50000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  },
+  {
+    _id: ObjectId("63d1182af8311d844d1422a5"),
+    name: 'imran',
+    address: [
+      { street: 'kuut', pin: 25648, city: 'knl' },
+      { street: 'kormangala', pin: 25658, city: 'HYD' }
+    ],
+    bankDetails: [
+      { bankName: 'RBI', accountNo: 56485297, accountBalance: 50000 },
+      { bankName: 'IOB', accountNo: 254648927, accountBalance: 100000 }
+    ],
+    companyName: 'Axis School of Fintech'
+  }
+]

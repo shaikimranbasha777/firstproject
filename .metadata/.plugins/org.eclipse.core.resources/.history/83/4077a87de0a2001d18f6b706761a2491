@@ -1,0 +1,27 @@
+package com.axis.service;
+
+import java.util.List;
+
+import com.axis.entity.Emplyee;
+
+public class EmplyeeServiceImpl implements EmplyeeService {
+
+	@Override
+	public Emplyee addEmployee(Emplyee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Emplyee> getallEmployees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Emplyee getEmployeeById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

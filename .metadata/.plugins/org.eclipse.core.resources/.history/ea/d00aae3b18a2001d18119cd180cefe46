@@ -1,0 +1,5 @@
+[15:25] Faculty 67[F]
+spring.datasource.url= jdbc:mysql://localhost:3306/axisdb?useSSL=false
+spring.datasource.username=root
+spring.datasource.password=immubash@786
+

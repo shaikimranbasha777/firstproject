@@ -1,0 +1,12 @@
+package com.axis.exception;
+
+public class idNotFoundExeption extends RuntimeException{
+	private String msg;
+	
+	public idNotFoundException(String msg) {
+		this.msg = msg;
+	}
+	public String getMsg() {
+		        return msg;
+		    }
+}

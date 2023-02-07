@@ -65,4 +65,16 @@ public class ProductServiceImple implements ProductService {
 		
 	}
 
+	@Override
+	public List<Product> getProductByName(String productName) {
+		// TODO Auto-generated method stub
+		return productRepository.findByProductName(productName);
+	}
+	
+	@Override
+	public List<Product> getProductByDescription(String productDescription) {
+		// TODO Auto-generated method stub
+		return productRepository.findByProductDescription(productDescription);
+	}
+
 }

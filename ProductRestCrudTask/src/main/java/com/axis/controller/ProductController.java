@@ -49,6 +49,15 @@ public class ProductController {
 		return new ResponseEntity<String>(productService.deleteProduct(id), HttpStatus.OK);
 	}
 	
+	@GetMapping("/productbyname/{productName}")
+	ResponseEntity<List<Product>> getProductByName(@PathVariable String productName){
+		return new ResponseEntity<List<Product>>(productService.getProductByName(productName), HttpStatus.OK);
+	}
+	
+	@GetMapping("/productbydescription/{productDescription}")
+	ResponseEntity<List<Product>> getProductByDescription(@PathVariable String productDescription){
+		return new ResponseEntity<List<Product>>(productService.getProductByDescription(productDescription), HttpStatus.OK);
+	}
 }
 
 

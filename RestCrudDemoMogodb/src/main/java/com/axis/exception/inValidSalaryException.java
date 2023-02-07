@@ -1,6 +1,10 @@
 package com.axis.exception;
 
 public class inValidSalaryException extends RuntimeException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String msg;
 
 	public inValidSalaryException(String msg) {
